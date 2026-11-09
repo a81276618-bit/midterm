@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>姓名：宋啟弘　學號：413210054　得分：0</title>
+  <title>姓名：宋啟弘　學號：413210054　得分：100</title>
   <style>
     :root { --bg:#f7f8fa; --card:#fff; --text:#1f2430; --muted:#6b7280; --accent:#2f5fd0; --ok:#1a7f4b; --bad:#c0392b; --border:#e3e6ec; }
     @media (prefers-color-scheme: dark) {
@@ -12,95 +12,112 @@
     * { box-sizing: border-box; }
     body { margin:0; background:var(--bg); color:var(--text); line-height:1.7;
       font-family:-apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif; }
-    .wrap { max-width:860px; margin:0 auto; padding:0 16px 48px; }
-    header { padding:32px 0 16px; }
+    .wrap { max-width:880px; margin:0 auto; padding:0 16px 56px; }
+    header { padding:32px 0 12px; }
     h1 { margin:0; font-size:1.5rem; }
-    .score { font-size:2.4rem; font-weight:700; color:var(--accent); }
+    .score { font-size:2.6rem; font-weight:700; color:var(--accent); }
     .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 20px; margin:14px 0; }
     .card h2 { margin:0 0 6px; font-size:1.05rem; }
     .muted { color:var(--muted); font-size:.92rem; }
-    label.row { display:flex; gap:8px; align-items:center; margin:8px 0; }
-    textarea, input[type=text] { width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:8px;
-      background:var(--bg); color:var(--text); font:inherit; }
-    textarea { min-height:90px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.9rem; }
-    .result { font-weight:600; }
+    label.row { display:flex; gap:8px; align-items:center; margin:6px 0; }
+    textarea { width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:8px; margin-top:6px;
+      background:var(--bg); color:var(--text); font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.85rem; min-height:110px; }
+    .result { font-weight:600; margin-top:6px; }
     .pass { color:var(--ok); } .fail { color:var(--bad); }
-    pre { background:var(--bg); padding:12px; border-radius:8px; overflow-x:auto; white-space:pre-wrap; }
+    h3 { margin:14px 0 4px; font-size:.95rem; color:var(--muted); }
+    a { color:var(--accent); }
   </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1 id="heading">姓名：宋啟弘　學號：413210054</h1>
-    <div>總得分 <span class="score" id="total">0</span> / 100</div>
-    <p class="muted">AI 期中考任務達成評分系統：勾選每題的達成情況並貼上實際執行結果，達標即給 20 分。</p>
+    <div>總得分 <span class="score" id="total">100</span> / 100</div>
+    <p class="muted">AI 期中考「目標達成評分制」：前四題請填入實際結果並勾選達成項目，達標即各給 20 分；本頁即為第五題的評分系統。環境：Windows 11、GNU Fortran 16.2.0（MSYS2 UCRT64）、Git 2.56.0。</p>
   </header>
 
   <section class="card">
-    <h2>第一題（20 分）：Fortran「1 加到 N」程式，編譯並成功執行</h2>
-    <label class="row"><input type="checkbox" class="chk" data-q="1"> 程式已成功編譯</label>
-    <label class="row"><input type="checkbox" class="chk" data-q="1"> 已成功執行並輸出正確結果</label>
-    <textarea class="ev" data-q="1" placeholder="貼上編譯與執行的實際輸出"></textarea>
+    <h2>第一題（20 分）：指揮 AI 輸出 1 加到 N 的 Fortran 程式，完成編譯並成功執行</h2>
+    <h3>指令與過程</h3>
+    <p class="muted">指揮 AI 撰寫 <code>sum_to_n.f90</code>（可由命令列或鍵盤輸入 N，以 64 位元整數累加），並以 gfortran 編譯、執行 N=10 驗證。</p>
+    <label class="row"><input type="checkbox" class="chk" data-q="1" checked> 程式已成功編譯</label>
+    <label class="row"><input type="checkbox" class="chk" data-q="1" checked> 已成功執行並輸出正確結果</label>
+    <textarea class="ev" data-q="1">$ gfortran -o sum_to_n sum_to_n.f90
+$ ./sum_to_n 10
+1 + 2 + ... + 10 = 55</textarea>
     <div class="result" id="r1"></div>
   </section>
 
   <section class="card">
-    <h2>第二題（20 分）：三次隨機驗證</h2>
-    <label class="row"><input type="checkbox" class="chk" data-q="2"> 三次隨機 N 的結果皆與公式 N(N+1)/2 相符</label>
-    <textarea class="ev" data-q="2" placeholder="貼上 run_tests.sh 的實際輸出"></textarea>
+    <h2>第二題（20 分）：執行程式進行三次隨機驗證</h2>
+    <h3>指令與過程</h3>
+    <p class="muted">指揮 AI 撰寫 <code>run_tests.sh</code>：隨機產生 N，執行程式，並與公式 N(N+1)/2 比對。</p>
+    <label class="row"><input type="checkbox" class="chk" data-q="2" checked> 三次隨機 N 的結果皆與公式 N(N+1)/2 相符</label>
+    <textarea class="ev" data-q="2">$ bash run_tests.sh
+編譯成功：sum_to_n.f90
+測試1: N=6777  程式輸出=[1 + 2 + ... + 6777 = 22967253]  公式值=22967253  => PASS
+測試2: N=24099 程式輸出=[1 + 2 + ... + 24099 = 290392950] 公式值=290392950 => PASS
+測試3: N=25740 程式輸出=[1 + 2 + ... + 25740 = 331286670] 公式值=331286670 => PASS
+通過 3 / 3</textarea>
     <div class="result" id="r2"></div>
   </section>
 
   <section class="card">
-    <h2>第三題（20 分）：Git 版本控制，兩次 commit</h2>
-    <label class="row"><input type="checkbox" class="chk" data-q="3"> 已 commit 原始版本</label>
-    <label class="row"><input type="checkbox" class="chk" data-q="3"> 逐行註解並重新編譯驗證成功後，已再次 commit 為新版</label>
-    <textarea class="ev" data-q="3" placeholder="貼上 git log --oneline 的實際輸出"></textarea>
+    <h2>第三題（20 分）：Git 版本控制，commit 原版，逐行註解並驗證後再 commit 為新版</h2>
+    <h3>指令與過程</h3>
+    <p class="muted">先 <code>git commit</code> 原始版本；指揮 AI 對原程式逐行加註解（<code>sum_to_n_commented.f90</code>），取代原檔並重新編譯、三次隨機驗證通過（N=20357、21445、13719，通過 3 / 3）後，再 commit 為新版。</p>
+    <label class="row"><input type="checkbox" class="chk" data-q="3" checked> 已 commit 原始版本</label>
+    <label class="row"><input type="checkbox" class="chk" data-q="3" checked> 逐行註解並重新編譯驗證成功後，已再次 commit 為新版</label>
+    <textarea class="ev" data-q="3">$ git log --oneline
+b26c1a5 (HEAD -> main, origin/main) Add line-by-line comments, verified by tests
+cb8c46d Initial version: sum 1 to N in Fortran
+8f32b75 Initial commit</textarea>
     <div class="result" id="r3"></div>
   </section>
 
   <section class="card">
-    <h2>第四題（20 分）：推送到 GitHub 雲端</h2>
-    <label class="row"><input type="checkbox" class="chk" data-q="4"> 已 push 到 GitHub，且遠端可看到 commit 紀錄</label>
-    <input type="text" class="ev" data-q="4" placeholder="貼上 GitHub repo 網址，例如 https://github.com/a81276618-bit/midterm">
+    <h2>第四題（20 分）：將本地端已版本控制的程式碼傳送到 GitHub 雲端儲存</h2>
+    <h3>指令與過程</h3>
+    <p class="muted">加入遠端 <code>origin</code>，<code>git pull --rebase</code> 合併 GitHub 上的初始 commit 後，<code>git push -u origin main</code>。</p>
+    <label class="row"><input type="checkbox" class="chk" data-q="4" checked> 已 push 到 GitHub，遠端可看到 commit 紀錄</label>
+    <textarea class="ev" data-q="4">https://github.com/a81276618-bit/midterm
+
+$ git push -u origin main
+To https://github.com/a81276618-bit/midterm.git
+   8f32b75..b26c1a5  main -> main
+branch 'main' set up to track 'origin/main'.</textarea>
     <div class="result" id="r4"></div>
   </section>
 
   <section class="card">
-    <h2>第五題（20 分）：任務達成評分系統（即本頁）</h2>
+    <h2>第五題（20 分）：任務達成評分系統，輸入前四題結果，達標就給分</h2>
+    <h3>指令與過程</h3>
+    <p class="muted">指揮 AI 製作本頁：每題需勾選所有達成項目且貼上實際結果才算達標，每題 20 分，頁面標題與總分會即時更新。你可以取消勾選或清空任一題的結果，觀察分數變化。</p>
     <label class="row"><input type="checkbox" id="q5" checked> 本頁可輸入前四題結果，達標即給分</label>
     <div class="result" id="r5"></div>
-  </section>
-
-  <section class="card">
-    <h2>作答過程紀錄</h2>
-    <p class="muted">將各題與 AI 的對話過程（題目、指令、AI 回答）貼在這裡。</p>
-    <textarea id="log" style="min-height:160px" placeholder="貼上作答過程"></textarea>
   </section>
 </div>
 
 <script>
-  // 在這裡填入姓名與學號，標題與頁面標題會自動更新
   const NAME = "宋啟弘";
   const STUDENT_ID = "413210054";
-
   const PER_Q = 20;
+
   function update() {
     let total = 0;
     for (const q of [1, 2, 3, 4]) {
       const boxes = [...document.querySelectorAll('.chk[data-q="' + q + '"]')];
       const ev = document.querySelector('.ev[data-q="' + q + '"]').value.trim();
-      const ok = boxes.every((b) => b.checked) && ev.length > 0;
+      const checked = boxes.every((b) => b.checked);
       const el = document.getElementById("r" + q);
-      if (ok) { total += PER_Q; el.textContent = "達標：+20 分"; el.className = "result pass"; }
+      if (checked && ev.length > 0) { total += PER_Q; el.textContent = "達標：+20 分"; el.className = "result pass"; }
       else {
-        el.textContent = boxes.every((b) => b.checked) ? "未達標：請貼上實際執行結果" : "未達標：尚有項目未完成";
+        el.textContent = checked ? "未達標：請貼上實際執行結果" : "未達標：尚有項目未完成";
         el.className = "result fail";
       }
     }
-    const q5 = document.getElementById("q5").checked;
     const r5 = document.getElementById("r5");
-    if (q5) { total += PER_Q; r5.textContent = "達標：+20 分"; r5.className = "result pass"; }
+    if (document.getElementById("q5").checked) { total += PER_Q; r5.textContent = "達標：+20 分"; r5.className = "result pass"; }
     else { r5.textContent = "未達標"; r5.className = "result fail"; }
 
     document.getElementById("total").textContent = total;
